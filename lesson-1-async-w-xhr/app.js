@@ -1,5 +1,5 @@
 (function () {
-    const searchedForText = 'Kavanaugh';
+    const searchedForText = '';
     const unsplashRequest = new XMLHttpRequest();
 
     unsplashRequest.open('GET', `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`);
@@ -25,6 +25,12 @@
         responseContainer.insertAdjacentHTML('afterbegin', htmlContent);
     }
     
+    function addArticles () {}
+    const articleRequest = new XMLHttpRequest();
+    articleRequest.onload = addArticles;
+    articleRequest.open('GET', `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=<144585c9-db15-402c-92bd-e94a7ea37794
+>`);
+    articleRequest.send();
     
     form.addEventListener('submit', function (e) {
         e.preventDefault();
