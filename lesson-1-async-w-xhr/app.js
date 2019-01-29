@@ -26,21 +26,29 @@
             }
         }).done(addImage);
 
-        const articleRequest = new XMLHttpRequest();
-        articleRequest.onload = addArticles;
-        articleRequest.onerror = function (err) {
+//        const articleRequest = new XMLHttpRequest();
+//        articleRequest.onload = addArticles;
+//        articleRequest.onerror = function (err) {
+//            requestError(err, 'articles');
+//        };
+//        articleRequest.open('GET', `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=e6a9801dab184d89a4d77b94ff44048c`);
+//        articleRequest.send();
+//    });
+    
+        $.ajax({ 
+            url: `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=e6a9801dab184d89a4d77b94ff44048c`
+        }).done(addArticles);
+        fail(function(err) {
             requestError(err, 'articles');
-        };
-        articleRequest.open('GET', `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=e6a9801dab184d89a4d77b94ff44048c`);
-        articleRequest.send();
+        });
     });
 
-    function addImage(images) { // images parameter added.
+    function addImage(data) { // images parameter added.
         let htmlContent = '';
 //        const data = JSON.parse(this.responseText); No longer needed.
 
-        if (images && images.results && images.results[0]) {
-            const firstImage = images.results[0]; // data.results[0]; beforehand.
+        if (data && data.results && data.results[0]) {
+            const firstImage = data.results[0]; 
             htmlContent = `<figure>
                 <img src="${firstImage.urls.regular}" alt="${searchedForText}">
                 <figcaption>${searchedForText} by ${firstImage.user.name}</figcaption>
@@ -52,9 +60,9 @@
         responseContainer.insertAdjacentHTML('afterbegin', htmlContent);
     }
 
-    function addArticles() {
+    function addArticles(data) {
         let htmlContent = '';
-        const data = JSON.parse(this.responseText);
+//        const data = JSON.parse(this.responseText);
 
         if (data.response && data.response.docs && data.response.docs.length > 1) {
             htmlContent = '<ul>' + data.response.docs.map(article => `<li class="article">
