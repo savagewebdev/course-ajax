@@ -20,7 +20,7 @@
 //        imgRequest.send();
         
         $.ajax({ 
-            url: https: api.unsplash.com/search/photos?page=1&query=${searchedForText} 
+            url: `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}` 
             headers: { 
                 Authorization: 'Client-ID 462d22cae6dd1d4877bb082c9e9c6502893a9bb7305d4bf8f681d13b56d4abc3' 
             } 
