@@ -18,11 +18,11 @@
 //        imgRequest.open('GET', `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`);
 //        imgRequest.setRequestHeader('Authorization', 'Client-ID 462d22cae6dd1d4877bb082c9e9c6502893a9bb7305d4bf8f681d13b56d4abc3');
 //        imgRequest.send();
-        
-        $.ajax({ 
+
+        $.ajax({
             url: `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`,
             headers: {
-    "Authorization" : "Client-ID 462d22cae6dd1d4877bb082c9e9c6502893a9bb7305d4bf8f681d13b56d4abc3" 
+    "Authorization" : "Client-ID 462d22cae6dd1d4877bb082c9e9c6502893a9bb7305d4bf8f681d13b56d4abc3"
             }
         }).done(addImage);
 
@@ -34,8 +34,8 @@
 //        articleRequest.open('GET', `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=e6a9801dab184d89a4d77b94ff44048c`);
 //        articleRequest.send();
 //    });
-    
-        $.ajax({ 
+
+        $.ajax({
             url: `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchedForText}&api-key=e6a9801dab184d89a4d77b94ff44048c`
         }).done(addArticles);
         fail(function(err) {
@@ -48,7 +48,7 @@
 //        const data = JSON.parse(this.responseText); No longer needed.
 
         if (data && data.results && data.results[0]) {
-            const firstImage = data.results[0]; 
+            const firstImage = data.results[0];
             htmlContent = `<figure>
                 <img src="${firstImage.urls.regular}" alt="${searchedForText}">
                 <figcaption>${searchedForText} by ${firstImage.user.name}</figcaption>
@@ -60,7 +60,7 @@
         responseContainer.insertAdjacentHTML('afterbegin', htmlContent);
     }
 
-    function addArticles(data) {
+    function addArticles(data) { // data to be found in API itself? Perhaps.
         let htmlContent = '';
 //        const data = JSON.parse(this.responseText);
 
