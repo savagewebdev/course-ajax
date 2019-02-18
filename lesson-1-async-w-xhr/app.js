@@ -23,7 +23,9 @@
             url: `https://api.unsplash.com/search/photos?page=1&query=${searchedForText}`,
             headers: {
     "Authorization" : "Client-ID 462d22cae6dd1d4877bb082c9e9c6502893a9bb7305d4bf8f681d13b56d4abc3"
-            }
+        },
+            // password: "wgy6PMFp-MWG2EUJz40Le2W7p0JagF_9q8lpGxmSqq2_xzGmUErWyg7zKTe5NicC5HAFuQB06b2opPXJkO2OK2oZAWDDMSdrS2I_nmpixKLJO_xQc6Dvw3OtWnVoXHYx"
+
         }).done(addImage);
 
 //        const articleRequest = new XMLHttpRequest();
