@@ -9,11 +9,14 @@
         responseContainer.innerHTML = '';
         searchedForText = searchField.value;
 
-        fetch(`url......${searchedForText}`, {
+        fetch('url......${searchedForText}', {
           headers: {
             Authorization: 'Client-ID 123123123123123123123',
-            password: 'presumably'
-          }
+          },
+          method: "POST",
+          headers: "Content-Type: application/graphql",
+
+
         })
 
         .then(response => response.JSON())
